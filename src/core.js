@@ -1,6 +1,8 @@
-import {Map} from "immutable";
+import {Map, List, set} from "immutable";
 
-export function setEntries(state, entries) {
+export const INITIAL_STATE = Map()
+
+export function setEntries(state = INITIAL_STATE, entries) {
   return state.set('entries', entries)
 }
 
@@ -11,10 +13,11 @@ export function getWinners(vote) {
   const bVotes = vote.getIn(['tally', b], 0)
   if (aVotes > bVotes)  return [a]
   else if (aVotes < bVotes)  return [b]
-  else                       return [a, b]
+  else return [a, b]
 }
 
 export function next(state) {
+
   const entries = state.get('entries')
     .concat(getWinners(state.get('vote')))
 

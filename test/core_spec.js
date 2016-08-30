@@ -83,10 +83,13 @@ describe('application logic', () => {
         }),
         entries: List()
       })
+
       const nextState = next(state)
+
       expect(nextState).to.equal(Map({
         winner: 'Trainspotting'
       }))
+
     })
   })
 
